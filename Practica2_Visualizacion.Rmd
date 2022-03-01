@@ -181,7 +181,31 @@ ggsave(filename = "./figure/Ejercicio2.pdf")
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio3.pdf``.
 
 ```{r Solucion ejercicio 3}
+load("./data/iris_tidy.Rdata")
+str(iris.tidy)
 
+iris.grafico1 <- ggplot(iris.tidy, aes(x = Species, y = Value))
+iris.grafico1
+iris.grafico1 <- iris.grafico1 + geom_point()
+iris.grafico1
+
+iris.grafico2 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour = Part)) + geom_point()
+iris.grafico2
+
+iris.grafico3 <- iris.grafico2 + facet_grid(.~Measure)
+iris.grafico3
+
+iris.grafico4 <- iris.grafico2 + facet_grid(Measure~.)
+iris.grafico4
+
+#Se comparan mucho mejor con la disposición en filas, ya que puestos por columnas se achatan y no permiten ver bien las gráficas, y además se ve peor la comparación entre la longitud y la anchura.
+
+iris.grafico5 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour = Part)) + geom_jitter()
+iris.grafico5
+
+#Se observa que el gráfico ya organiza los puntos dependiendo de las especies.
+
+ggsave(filename = "./figure/Ejercicio3.pdf")
 ```
 
 ## Gráficos de línea con **ggplot2**
