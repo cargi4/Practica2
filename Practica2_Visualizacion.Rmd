@@ -157,7 +157,16 @@ ggsave(filename = "./figure/Ejercicio1.pdf")
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio2.pdf``.
 
 ```{r Solucion ejercicio 2}
+grafico4 <- ggplot(ds, aes(x = Temp9am, y = Pressure9am)) + geom_point()
+grafico4
+grafico5 <- ggplot(ds, aes(x = Temp9am, y = Pressure9am, shape = RainToday)) + geom_point()
+grafico5
+grafico6 <- ggplot(ds, aes(x = Temp9am, y = Pressure9am, colour = RainToday)) + geom_point()
+grafico6
+#Se observa mucho mejor con la representación por color, puesto que con la forma muchas veces no se diferencia cuál es cuál y no se ve la diferencia a simple vista, al contrario que con el color.
+grafico6 <- grafico6 + ggtitle("Representación de la temperatura con respecto a la presión a las 9 de la mañana en Australia.")
 
+ggsave(filename = "./figure/Ejercicio2.pdf")
 ```
 
 ### **Ejercicio 3**
